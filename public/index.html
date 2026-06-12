@@ -1,0 +1,299 @@
+powershell -Command "$html = @'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MRFSMM - Best & Cheapest SMM Panel</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--sw:260px;--th:64px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#f0f4f8;color:#1a202c;overflow-x:hidden}
+#sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:linear-gradient(180deg,#0c1222,#111b33);z-index:50;display:flex;flex-direction:column;overflow-y:auto;transition:transform .3s}
+#sidebar .brand{padding:24px 20px;border-bottom:1px solid rgba(255,255,255,.06)}
+#sidebar .brand h1{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#f97316,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#sidebar .brand p{font-size:.7rem;color:#64748b;margin-top:2px;letter-spacing:1px;text-transform:uppercase}
+#sidebar nav{flex:1;padding:12px 10px}
+#sidebar nav a{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;color:#94a3b8;font-size:.875rem;font-weight:500;cursor:pointer;transition:all .2s;margin-bottom:2px;text-decoration:none;position:relative}
+#sidebar nav a:hover{color:#e2e8f0;background:rgba(255,255,255,.04)}
+#sidebar nav a.active{color:#f97316;background:rgba(249,115,22,.08);font-weight:600}
+#sidebar nav a.active::before{content:'';position:absolute;left:0;top:15%;height:70%;width:3px;background:#f97316;border-radius:0 3px 3px 0}
+#sidebar nav a i{width:20px;text-align:center}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,.06)}
+.sidebar-footer p{font-size:.68rem;color:#475569;text-align:center}
+#main{margin-left:var(--sw);min-height:100vh}
+#topbar{position:sticky;top:0;height:var(--th);background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:40;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.balance-badge{background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(249,115,22,.3)}
+.user-info{display:flex;align-items:center;gap:8px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#f97316,#fbbf24);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.8rem}
+#content{padding:24px 28px 40px}
+.page{display:none;animation:fu .35s ease}
+.page.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.stat-card{background:#fff;border-radius:14px;padding:20px 22px;border:1px solid #e2e8f0;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.06)}
+.stat-card .ib{position:absolute;right:-8px;top:-8px;width:64px;height:64px;border-radius:50%;opacity:.08}
+.sl{font-size:.78rem;color:#64748b;font-weight:500;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.sv{font-size:1.35rem;font-weight:800;color:#0f172a}
+.fc{background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:24px 28px}
+.fh{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px}
+.fh h2{font-size:1.1rem;font-weight:700;color:#0f172a}
+.fh h2 i{color:#f97316;margin-right:6px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.fgrp{margin-bottom:18px}
+.fgrp label{display:block;font-size:.82rem;font-weight:600;color:#374151;margin-bottom:6px}
+.fgrp select,.fgrp input{width:100%;padding:10px 14px;border:1.5px solid #d1d5db;border-radius:10px;font-size:.875rem;font-family:inherit;transition:border .2s,box-shadow .2s;background:#fff;outline:none}
+.fgrp select:focus,.fgrp input:focus{border-color:#f97316;box-shadow:0 0 0 3px rgba(249,115,22,.1)}
+.cd{background:#f8fafc!important;font-weight:700!important;color:#f97316!important}
+.hint{font-size:.75rem;color:#9ca3af;margin-top:4px}
+.fa-btns{display:flex;align-items:center;gap:12px;margin-top:6px;flex-wrap:wrap}
+.bp{background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;border:none;padding:12px 32px;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(249,115,22,.3)}
+.bp:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(249,115,22,.4)}
+.bp:active{transform:translateY(0)}
+.bp.sm{padding:6px 14px;font-size:.78rem;border-radius:8px}
+.bs{background:#fff;color:#374151;border:1.5px solid #d1d5db;padding:8px 20px;border-radius:10px;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.bs:hover{border-color:#f97316;color:#f97316}
+.bs.sm{padding:6px 14px;font-size:.78rem;border-radius:8px}
+.wa{width:42px;height:42px;border-radius:10px;background:#25d366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;text-decoration:none;transition:transform .2s}
+.wa:hover{transform:scale(1.05)}
+.st{font-size:.8rem;color:#64748b;display:flex;align-items:center;gap:6px}
+.pd{width:8px;height:8px;border-radius:50%;display:inline-block;background:#10b981;animation:pl 2s infinite}
+@keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+.oc{background:#fff;border-radius:14px;border:1px solid #e2e8f0;padding:18px 20px;margin-bottom:12px;transition:box-shadow .2s}
+.oc:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.ot{display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.oid{font-size:.78rem;color:#64748b}
+.och{font-size:.85rem;font-weight:700;color:#f97316}
+.osn{font-size:.84rem;font-weight:600;color:#1e293b;margin-bottom:8px;line-height:1.4}
+.od{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;font-size:.78rem;color:#64748b}
+.od i{width:14px;color:#94a3b8}
+.od a{color:#3b82f6;text-decoration:none}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.bp-pending{background:#fef3c7;color:#92400e}
+.bp-inprogress{background:#e0e7ff;color:#3730a3}
+.bp-completed{background:#d1fae5;color:#065f46}
+.bp-partial{background:#fce7f3;color:#9d174d}
+.bp-canceled{background:#fee2e2;color:#991b1b}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px;background:#f1f5f9;padding:4px;border-radius:12px}
+.tb{padding:8px 18px;border-radius:8px;font-size:.82rem;font-weight:600;color:#64748b;cursor:pointer;border:none;background:transparent;transition:all .2s;font-family:inherit}
+.tb:hover{color:#334155}
+.tb.active{background:#fff;color:#f97316;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.dt{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0}
+.dt thead{background:linear-gradient(135deg,#f8fafc,#f1f5f9)}
+.dt th{padding:12px 16px;font-size:.78rem;font-weight:700;color:#475569;text-align:left;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #e2e8f0}
+.dt td{padding:12px 16px;font-size:.84rem;color:#374151;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+.dt tbody tr:hover{background:#fefce8}
+.dt tbody tr:last-child td{border-bottom:none}
+.ch{background:linear-gradient(135deg,#fff7ed,#ffedd5)!important;padding:10px 16px!important;font-size:.82rem!important;font-weight:700!important;color:#9a3412!important;border-left:3px solid #f97316}
+.et{background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden}
+.eth{padding:16px 20px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between}
+.eth h3{font-size:.95rem;font-weight:700;color:#0f172a;margin:0}
+.eth h3 i{margin-right:6px}
+.tw{overflow-x:auto}
+.empty{font-size:.78rem;color:#94a3b8;text-align:center;padding:30px}
+.es{text-align:center;padding:60px 20px;color:#94a3b8}
+.es i{font-size:3rem;margin-bottom:12px;display:block}
+.es p{font-size:.95rem;font-weight:500}
+.es span{font-size:.82rem;margin-top:4px;display:block}
+.sb{position:relative}
+.sb input{padding-left:42px}
+.sb i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:.9rem}
+.wb{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:start;gap:10px}
+.wb i{color:#d97706;margin-top:2px;flex-shrink:0}
+.wb p{font-size:.84rem;color:#92400e;line-height:1.5}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.pc{background:linear-gradient(135deg,#065f46,#047857);border-radius:16px;padding:28px;color:#fff;position:relative;overflow:hidden}
+.pc::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06)}
+.pc::after{content:'';position:absolute;bottom:-40px;left:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.04)}
+.pl{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;opacity:.7;margin-bottom:12px}
+.pc h3{font-size:1.15rem;font-weight:700;margin-bottom:20px;color:#fff}
+.pc h3 i{margin-right:6px}
+.pd2{margin-bottom:16px;position:relative;z-index:1}
+.dl{display:block;font-size:.75rem;opacity:.6;margin-bottom:4px}
+.dv{font-size:1.1rem;font-weight:600}
+.dv.big{font-size:1.5rem;font-weight:800;letter-spacing:1px}
+.rc{max-width:600px;margin:0 auto}
+.rh{background:linear-gradient(135deg,#f97316,#ea580c);border-radius:20px;padding:40px;text-align:center;color:#fff;margin-bottom:24px}
+.rh i{font-size:3rem;margin-bottom:16px;opacity:.9}
+.rh h2{font-size:1.4rem;font-weight:800;margin-bottom:8px}
+.rh p{font-size:.9rem;opacity:.85;line-height:1.6}
+.rig{display:flex;gap:8px}
+.rig input{flex:1}
+.ibx{margin-top:20px;padding:20px;border-radius:12px}
+.ibx.g{background:#f0fdf4;border:1px solid #bbf7d0}
+.ibx.b{background:#f0f9ff;border:1px solid #bae6fd;margin-top:8px}
+.ibx h4{font-size:.9rem;font-weight:700;margin-bottom:8px}
+.ibx.g h4{color:#065f46}
+.ibx.b p{font-size:.8rem;color:#0369a1;line-height:1.6}
+.ibx.g ol{font-size:.82rem;color:#047857;line-height:2;padding-left:18px}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rvc{background:#fff;border-radius:14px;border:1px solid #e2e8f0;padding:20px}
+.rvh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.rva{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f97316,#fbbf24);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.85rem;flex-shrink:0}
+.rvn{font-size:.88rem;font-weight:700;color:#0f172a}
+.rvd{font-size:.72rem;color:#94a3b8}
+.rvs{margin-bottom:8px}
+.rvs i{color:#fbbf24;font-size:.8rem}
+.rvs .em{color:#d1d5db}
+.rvt{font-size:.84rem;color:#475569;line-height:1.6}
+.pt{font-size:1.2rem;font-weight:700;margin-bottom:16px;color:#0f172a}
+.pt i{margin-right:8px}
+.aeb{background:#0f172a;border-radius:12px;padding:20px;margin-bottom:16px;overflow-x:auto}
+.ael{color:#94a3b8;font-size:.78rem;margin-bottom:8px}
+.aeb code{color:#fbbf24;font-size:.9rem;word-break:break-all}
+.st2{font-size:.95rem;font-weight:700;margin:20px 0 12px;color:#0f172a}
+.aal{display:flex;flex-direction:column;gap:8px}
+.aai{padding:12px 16px;background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0}
+.mb{font-size:.75rem;font-weight:700;color:#f97316;text-transform:uppercase}
+.aai code{font-size:.84rem;color:#334155;margin-left:8px}
+.ad{font-size:.78rem;color:#64748b;margin-left:8px}
+.tc{background:#fff;border-radius:16px;border:1px solid #e2e8f0;padding:28px;line-height:1.8;color:#374151;font-size:.88rem}
+.tc h3{font-weight:700;margin:20px 0 8px;color:#0f172a}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dll{display:flex;flex-direction:column}
+.dr{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:.84rem}
+.dr span:first-child{color:#64748b}
+.dr span:last-child{font-weight:600}
+.tbc{color:#f97316!important;font-weight:700!important}
+.iwb{display:flex;gap:8px}
+.iwb input{flex:1}
+.mi{font-family:'Courier New',monospace!important;font-size:.82rem!important;background:#f8fafc!important}
+#toast-container{position:fixed;top:80px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:8px}
+.toast{padding:14px 20px;border-radius:12px;font-size:.85rem;font-weight:500;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,.15);animation:si .3s ease;min-width:280px;display:flex;align-items:center;gap:10px}
+.toast-success{background:rgba(16,185,129,.95)}
+.toast-error{background:rgba(239,68,68,.95)}
+.toast-info{background:rgba(6,182,212,.95)}
+.toast-warning{background:rgba(245,158,11,.95)}
+@keyframes si{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes so{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(40px)}}
+#mobile-toggle{display:none;position:fixed;top:16px;left:16px;z-index:60;width:40px;height:40px;border-radius:10px;background:#0c1222;color:#fff;border:none;cursor:pointer;font-size:1.1rem;align-items:center;justify-content:center}
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45}
+@media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}.rg{grid-template-columns:repeat(2,1fr)}.ag{grid-template-columns:1fr}}
+@media(max-width:768px){#sidebar{transform:translateX(-100%)}#sidebar.open{transform:translateX(0)}#main{margin-left:0}#mobile-toggle{display:flex}#overlay.show{display:block}#topbar{padding-left:60px}#content{padding:16px}.stats-grid{grid-template-columns:1fr 1fr;gap:10px}.stat-card .sv{font-size:1.1rem}.fg{grid-template-columns:1fr;gap:0}.fg2{grid-template-columns:1fr}.dt th,.dt td{padding:8px 10px;font-size:.75rem}.rg{grid-template-columns:1fr}}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr}.tabs{gap:2px}.tb{padding:6px 12px;font-size:.76rem}}
+</style>
+</head>
+<body>
+<button id="mobile-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+<div id="overlay" onclick="toggleSidebar()"></div>
+<aside id="sidebar">
+<div class="brand"><h1>MRFSMM</h1><p>Cheapest SMM Panel</p></div>
+<nav id="nav">
+<a data-page="new-order" class="active"><i class="fas fa-plus-circle"></i> New Order</a>
+<a data-page="my-orders"><i class="fas fa-list-alt"></i> My Orders</a>
+<a data-page="add-funds"><i class="fas fa-wallet"></i> Add Funds</a>
+<a data-page="services"><i class="fas fa-th-list"></i> Our Services</a>
+<a data-page="refer"><i class="fas fa-gift"></i> Refer & Earn</a>
+<a data-page="reviews"><i class="fas fa-star"></i> Clients Reviews</a>
+<a data-page="api"><i class="fas fa-plug"></i> Connect API</a>
+<a data-page="terms"><i class="fas fa-file-contract"></i> Terms & Policy</a>
+<a data-page="account"><i class="fas fa-user-cog"></i> Account & API</a>
+</nav>
+<div class="sidebar-footer"><p>MRFSMM &copy; 2025 - All Rights Reserved</p></div>
+</aside>
+<div id="main">
+<header id="topbar">
+<div><span style="font-size:.85rem;color:#64748b;font-weight:500"><i class="fas fa-coins" style="color:#f97316;margin-right:4px"></i> PKR ₨</span></div>
+<div style="display:flex;align-items:center;gap:16px">
+<div class="balance-badge"><i class="fas fa-wallet"></i> ≈ ₨ <span id="top-balance">4.45</span></div>
+<div class="user-info"><div class="avatar" id="avatar-initial">K</div><span style="font-size:.85rem;font-weight:600;color:#1e293b" id="top-username">kutta</span></div>
+</div>
+</header>
+<div id="content">
+<section class="page active" id="page-new-order">
+<div class="stats-grid">
+<div class="stat-card"><div class="ib" style="background:#f97316"></div><div class="sl"><i class="fas fa-hand-sparkles" style="color:#f97316;margin-right:4px"></i> Welcome Dear</div><div class="sv" id="stat-username">kutta</div></div>
+<div class="stat-card"><div class="ib" style="background:#3b82f6"></div><div class="sl"><i class="fas fa-shopping-cart" style="color:#3b82f6;margin-right:4px"></i> Total Orders</div><div class="sv" id="stat-orders">0</div></div>
+<div class="stat-card"><div class="ib" style="background:#10b981"></div><div class="sl"><i class="fas fa-chart-line" style="color:#10b981;margin-right:4px"></i> Total Spent</div><div class="sv">≈ ₨ <span id="stat-spent">0.00</span></div></div>
+<div class="stat-card"><div class="ib" style="background:#8b5cf6"></div><div class="sl"><i class="fas fa-wallet" style="color:#8b5cf6;margin-right:4px"></i> Your Balance</div><div class="sv">≈ ₨ <span id="stat-balance">4.45</span></div></div>
+</div>
+<div class="fc">
+<div class="fh"><h2><i class="fas fa-bolt"></i> Place New Order</h2><div class="st"><span class="pd"></span> Session: <span id="session-timer">0m 0s</span></div></div>
+<div class="fg">
+<div class="fgrp"><label>Category</label><select id="order-category" onchange="onCategoryChange()"><option value="">-- Select Category --</option></select></div>
+<div class="fgrp"><label>Service</label><select id="order-service" onchange="onServiceChange()" disabled><option value="">-- Select Service --</option></select></div>
+</div>
+<div class="fgrp"><label>Link</label><input type="url" id="order-link" placeholder="Enter your post/profile/video link here..."></div>
+<div class="fg">
+<div class="fgrp"><label>Quantity</label><input type="number" id="order-quantity" placeholder="Enter quantity" oninput="calculateCharge()" disabled><div class="hint" id="qty-hint">Select a service first</div></div>
+<div class="fgrp"><label>Charge</label><input type="text" id="order-charge" value="≈ ₨ 0.00" readonly class="cd"></div>
+</div>
+<div class="fa-btns">
+<button class="bp" onclick="submitOrder()"><i class="fas fa-paper-plane"></i> Submit</button>
+<a href="https://wa.me/923439898333" target="_blank" class="wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+</section>
+<section class="page" id="page-my-orders">
+<h2 class="pt"><i class="fas fa-list-alt" style="color:#f97316"></i> My Orders</h2>
+<div class="tabs" id="order-tabs">
+<button class="tb active" data-filter="all">All</button>
+<button class="tb" data-filter="Pending">Pending</button>
+<button class="tb" data-filter="In Progress">In Progress</button>
+<button class="tb" data-filter="Completed">Completed</button>
+<button class="tb" data-filter="Partial">Partial</button>
+<button class="tb" data-filter="Canceled">Canceled</button>
+</div>
+<div id="orders-list"><div class="es"><i class="fas fa-inbox"></i><p>No orders yet</p><span>Place your first order from the New Order page</span></div></div>
+</section>
+<section class="page" id="page-add-funds">
+<h2 class="pt"><i class="fas fa-wallet" style="color:#f97316"></i> Add Funds</h2>
+<div class="wb"><i class="fas fa-exclamation-triangle"></i><p><strong>Before Depositing Read Our Terms And Instructions</strong> — Send payment to the given number, then submit your transaction details below. Your payment will be added after verification.</p></div>
+<div class="fg2">
+<div class="pc"><div style="position:relative;z-index:1"><p class="pl">Payment Method</p><h3><i class="fas fa-mobile-alt"></i> EasyPaisa</h3><div class="pd2"><span class="dl">Account Number</span><span class="dv big">0343-9898333</span></div><div class="pd2"><span class="dl">Account Name</span><span class="dv">Nihayat Begum</span></div></div></div>
+<div class="fc"><h3>Submit Payment Proof</h3>
+<div class="fgrp"><label>Amount (PKR)</label><input type="number" id="fund-amount" placeholder="Enter deposit amount" min="1"></div>
+<div class="fgrp"><label>Transaction ID</label><input type="text" id="fund-txnid" placeholder="Enter your transaction ID"></div>
+<div class="fgrp"><label>Sending Number</label><input type="text" id="fund-sender" placeholder="Your EasyPaisa/JazzCash number"></div>
+<button class="bp" onclick="submitFundRequest()"><i class="fas fa-paper-plane"></i> Submit Payment</button>
+</div>
+</div>
+<div class="et"><div class="eth"><h3><i class="fas fa-clock" style="color:#f59e0b"></i> Pending Payments</h3><span class="badge bp-pending" id="pending-count">0 Pending</span></div>
+<div class="tw"><table class="dt"><thead><tr><th>ID</th><th>Date</th><th>Amount</th><th>Txn ID</th><th>Status</th></tr></thead><tbody id="pending-tbody"><tr><td colspan="5" class="empty">No pending payments</td></tr></tbody></table></div></div>
+</section>
+<section class="page" id="page-services">
+<h2 class="pt"><i class="fas fa-th-list" style="color:#f97316"></i> Our Services</h2>
+<div class="sb" style="margin-bottom:20px;max-width:400px"><i class="fas fa-search"></i><input type="text" id="service-search" placeholder="Search services..." oninput="filterServices()"></div>
+<div class="tw"><table class="dt"><thead><tr><th style="width:60px">ID</th><th>Service Name</th><th style="width:110px">Price/1K</th><th style="width:80px">Min</th><th style="width:100px">Max</th><th style="width:100px">Action</th></tr></thead><tbody id="services-tbody"></tbody></table></div>
+</section>
+<section class="page" id="page-refer">
+<div class="rc"><div class="rh"><i class="fas fa-gift"></i><h2>Refer & Earn</h2><p>Invite friends to MRFSMM and earn commission on every order they place.</p></div>
+<div class="fc"><label style="font-size:.82rem;font-weight:600;color:#374151;display:block;margin-bottom:8px">Your Referral Link</label><div class="rig"><input type="text" id="ref-link" readonly style="flex:1;padding:10px 14px;border:1.5px solid #d1d5db;border-radius:10px;font-size:.84rem;background:#f8fafc"><button class="bp sm" onclick="copyRefLink()"><i class="fas fa-copy"></i> Copy</button></div>
+<div class="ibx g"><h4>How It Works</h4><ol><li>Share your unique referral link with friends</li><li>They register using your link</li><li>You earn commission on every order they place</li><li>Commission is added to your balance automatically</li></ol></div></div></div>
+</section>
+<section class="page" id="page-reviews">
+<h2 class="pt"><i class="fas fa-star" style="color:#f97316"></i> Clients Reviews</h2>
+<div class="rg" id="reviews-grid"></div>
+</section>
+<section class="page" id="page-api">
+<h2 class="pt"><i class="fas fa-plug" style="color:#f97316"></i> Connect API</h2>
+<div class="fc">
+<p style="font-size:.88rem;color:#475569;line-height:1.7;margin-bottom:20px">Use our API to integrate MRFSMM services into your own platform.</p>
+<div class="aeb"><p class="ael">API Endpoint</p><code>https://tajammalsmmpanel.com/api/v2</code></div>
+<div class="fgrp"><label>API Key</label><div class="iwb"><input type="text" value="c7601e01af8aa62ca2518e89d88c4d45" readonly class="mi"><button class="bs sm" onclick="cpTxt('c7601e01af8aa62ca2518e89d88c4d45')"><i class="fas fa-copy"></i></button></div></div>
+<h3 class="st2">Available Actions</h3>
+<div class="aal">
+<div class="aai"><span class="mb">POST</span><code>action=services</code><span class="ad">— Get service list</span></div>
+<div class="aai"><span class="mb">POST</span><code>action=add</code><span class="ad">— Place new order</span></div>
+<div class="aai"><span class="mb">POST</span><code>action=status</code><span class="ad">— Check order status</span></div>
+<div class="aai"><span class="mb">POST</span><code>action=balance</code><span class="ad">— Check balance</span></div>
+</div></div>
+</section>
+<section class="page" id="page-terms">
+<h2 class="pt"><i class="fas fa-file-contract" style="color:#f97316"></i> Terms & Policy</h2>
+<div class="tc"><h3>1. General Terms</h3><p>By using MRFSMM, you agree to these terms. We reserve the right to modify terms at any time.</p><h3>2. Services</h3><p>All services are provided as described. Start times and delivery speeds are estimates and may vary.</p><h3>3. Payments & Refunds</h3><p>Payments are processed manually via EasyPaisa. No refunds for completed orders.</p><h3>4. Account Responsibility</h3><p>You are responsible for your account security. Do not share your credentials.</p><h3>5. Prohibited Use</h3><p>Using our services for illegal activities is strictly prohibited.</p><h3>6. Fund Deposits</h3><p>Send payment only to the official number. Funds added after manual verification.</p></div>
+</section>
+<section class="page" id="page-account">
+<h2 class="pt"><i class="fas fa-user-cog" style="color:#f97316"></i> Account & API</h2>
+<div class="ag">
+<div class="fc"><h3>Account Details</h3><div class="dll"><div class="dr"><span>Username</span><span id="acc-username">kutta</span></div><div class="dr"><span>Email</span><span>—</span></div><div class="dr"><span>Balance</span><span class="tbc" id="acc-balance">≈ ₨ 4.45</span></div><div class="dr"><span>Total Orders</span><span id="acc-orders">0</span></div><div class="dr"><span>Total Spent</span><span>≈ ₨ <span id="acc-spent">0.00</span></span></div></div></div>
+<div class="fc"><h3>API Configuration</h3><div class="fgrp"><label>API Key</label><div class="iwb"><input type="text" value="c7601e01af8aa62ca2518e89d88c4d45" readonly class="mi"><button class="bs sm" onclick="cpTxt('c7601e01af8aa62ca2518e89d88c4d45')"><i class="fas fa-copy"></i></button></div></div><div class="fgrp"><label>API URL</label><input type="text" value="https://tajammalsmmpanel.com/api/v2" readonly class="mi"></div><div class="ibx b"><p><i class="fas fa-info-circle"></i> Use these credentials to connect external applications.</p></div></div>
+</div>
+</section>
+</div></div>
+<div id="toast-container"></div>
+'@; [IO.File]::WriteAllText('public\index.html', $html, [System.Text.Encoding]::UTF8)"
