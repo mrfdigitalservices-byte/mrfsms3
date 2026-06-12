@@ -1,0 +1,16 @@
+{
+  "name": "mrfsmm",
+  "version": "1.0.0",
+  "description": "MRFSMM - Best & Cheapest SMM Panel in Pakistan",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
